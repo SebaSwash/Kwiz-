@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {Box, 
         Paper, 
         Button, 
@@ -20,6 +21,11 @@ export default function QuizConfigForm ({setContinueQuiz}) {
     const classes = useStyles();
     const history = useHistory();
     const {register, handleSubmit, formState: {errors}} = useForm();
+
+
+    useEffect(() => {
+        sessionStorage.clear();
+    }, []);
 
     /* ====================== Definición de opciones de selección ====================== */
     const categories = [

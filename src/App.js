@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 /* -------- Importación de componentes (páginas) principales -------- */
 import MainPage from './pages/landing';
+import QuizResults from './pages/quiz/result';
 import Quiz from './pages/quiz';
 
 const theme = createTheme({
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path='/quiz'>
             <Quiz />
+          </Route>
+          <Route exact path='/results'>
+            <QuizResults />
           </Route>
         </Switch>
 

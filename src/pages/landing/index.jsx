@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Box, 
         Paper, 
         Button, 
@@ -9,6 +9,7 @@ import {Box,
     } from '@material-ui/core';
 
 import mainLogo from '../../img/mainLogo.png';
+import { useHistory } from 'react-router';
 
 /* Importación de estilos de la vista actual */
 import {mainStyles as useStyles} from '../../styles';
@@ -20,6 +21,12 @@ import QuizConfigForm from '../quiz-settings';
 
 const WelcomePaper = ({setContinueQuiz}) => {
     const classes = useStyles();
+    const history = useHistory();
+
+    useEffect(() => {
+        sessionStorage.clear();
+    }, []);
+
     return (
         <Grid container>
             <Container component="main" maxWidth="xs">

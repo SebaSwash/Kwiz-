@@ -10,9 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 /* Importación de estilos de la vista actual */
 import {mainStyles as useStyles} from '../../styles';
 
-/* Importación de sonidos de respuesta correcta e incorrecta */
-import correctAnswerSound from '../../sounds/correct-answer.mp3';
-
 /* Componente para mostrar pregunta actual */
 const Question = ({onQuestionChange, data}) => {
     const classes = useStyles();
@@ -27,12 +24,20 @@ const Question = ({onQuestionChange, data}) => {
         let correctAnswer = answer === question.correct_answer;
 
         if (correctAnswer) {
-            toast.success('¡Correct!');
+            toast.success('¡Correct! The answer was: ' + answer);
+
             if (sessionStorage.getItem('score')) {
                 sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 10);
             } else {
                 sessionStorage.setItem('score', 10);
             }
+
+            if (sessionStorage.getItem('correctCounter')) {
+                sessionStorage.setItem('correctCounter', parseInt(sessionStorage.getItem('correctCounter')) + 1);
+            } else {
+                sessionStorage.setItem('correctCounter', 1);
+            }
+
         } else {
             toast.error('¡Ups! That was not the right answer...');
         }
